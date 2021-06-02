@@ -17,7 +17,7 @@ check=1
 while(check>0):
     driver.get(weburl)
     print("Website Loaded... Waiting")
-    time.sleep(1200)
+    time.sleep(20)
     driver.close()
     print("Times Run = ", check)
     check=check+1
