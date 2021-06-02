@@ -2,24 +2,27 @@
 import time
 import os
 
-import undetected_chromedriver.v2 as uc
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 
 weburl = os.getenv('WEB_URL')
 
-check=1
-options = uc.ChromeOptions()
-options.user_data_dir="/app/"
-options.add_argument("window-size=1920x1480")
-options.add_argument("disable-dev-shm-usage")
-driver = uc.Chrome(
-    options=options, executable_path=ChromeDriverManager().install()
+
+gChromeOptions = webdriver.ChromeOptions()
+gChromeOptions.add_argument("window-size=1920x1480")
+gChromeOptions.add_argument("disable-dev-shm-usage")
+gChromeOptions.add_argument("disable-blink-features=AutomationControlled")
+gChromeOptions.add_argument("no-sandbox")
+gChromeOptions.add_argument("'useAutomationExtension', False")
+gChromeOptions.add_argument('"excludeSwitches", ["enable-logging", "enable-automation"]')
+gChromeOptions.add_argument('user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1309.0 Safari/537.17"')
+gDriver = webdriver.Chrome(
+    chrome_options=gChromeOptions, executable_path=ChromeDriverManager().install()
 )
-while(check>0):    
-    driver.get(weburl)
-    print("Waiting...")
+check=1
+while(check>0):   
+    gDriver.get(weburl)
     time.sleep(20)
-    driver.close()
+    gDriver.quit()
     print("Times Run = ", check)
     check=check+1
