@@ -10,16 +10,16 @@ weburl = os.getenv('WEB_URL')
 
 check=1
 while(check>0):
-    gChromeOptions = webdriver.ChromeOptions()
-    gChromeOptions.add_argument("window-size=1920x1480")
-    gChromeOptions.add_argument("disable-dev-shm-usage")
-    gDriver = uc.Chrome(
-        options=gChromeOptions, executable_path=ChromeDriverManager().install()
+    options = webdriver.ChromeOptions()
+    options.add_argument("window-size=1920x1480")
+    options.add_argument("disable-dev-shm-usage")
+    driver = uc.Chrome(
+        options=options, executable_path=ChromeDriverManager().install()
     )
     
-    gDriver.get(weburl)
+    driver.get(weburl)
     print("Waiting...")
     time.sleep(20)
-    gDriver.close()
+    driver.close()
     print("Times Run = ", check)
     check=check+1
