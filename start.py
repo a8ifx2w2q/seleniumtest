@@ -11,7 +11,7 @@ weburl = os.getenv('WEB_URL')
 check=1
 while(check>0):
     options = uc.ChromeOptions()
-    options.user_data_dir=/app/
+    options.user_data_dir="/app/"
     options.add_argument("window-size=1920x1480")
     options.add_argument("disable-dev-shm-usage")
     driver = uc.Chrome(
