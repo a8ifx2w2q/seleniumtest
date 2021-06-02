@@ -1,22 +1,17 @@
 import time
 import os
-
+import undetected_chromedriver as uc
 from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
 
 weburl = os.getenv('WEB_URL')
 
 check=1
 while(check>0):
-    gChromeOptions = webdriver.ChromeOptions()
-    gChromeOptions.add_argument("window-size=1920x1480")
-    gChromeOptions.add_argument("disable-dev-shm-usage")
-    gDriver = webdriver.Chrome(
-        chrome_options=gChromeOptions, executable_path=ChromeDriverManager().install()
-    )
-    
-    gDriver.get(weburl)
-    time.sleep(600)
-    gDriver.close()
+
+
+    options = webdriver.ChromeOptions() 
+    options.add_argument("start-maximized")
+    driver = uc.Chrome(options=options, executable_path=/app/.apt/usr/bin/google-chrome)
+    driver.get('https://bet365.com')
     print("Times Run = ", check)
     check=check+1
