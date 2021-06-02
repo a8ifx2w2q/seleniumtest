@@ -14,7 +14,7 @@ while(check>0):
     gChromeOptions.add_argument("window-size=1920x1480")
     gChromeOptions.add_argument("disable-dev-shm-usage")
     gDriver = uc.Chrome(
-        chrome_options=gChromeOptions, executable_path=ChromeDriverManager().install()
+        options=gChromeOptions, executable_path=ChromeDriverManager().install()
     )
     
     gDriver.get(weburl)
