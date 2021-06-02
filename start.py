@@ -7,11 +7,10 @@ weburl = os.getenv('WEB_URL')
 
 check=1
 while(check>0):
-
-
     options = webdriver.ChromeOptions() 
     options.add_argument("start-maximized")
     driver = uc.Chrome(options=options, executable_path=/app/.apt/usr/bin/google-chrome)
-    driver.get('https://bet365.com')
+    driver.get(weburl)
+    time.sleep(1200)
     print("Times Run = ", check)
     check=check+1
